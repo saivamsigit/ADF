@@ -1,0 +1,17 @@
+{
+	"name": "serverless_openrowset",
+	"properties": {
+		"content": {
+			"query": "--openrow set function CSV \n\nSELECT \n* \nFROM\nOPENROWSET\n(\n    BULK 'data1',\n    DATA_SOURCE='serverless_ext_data_source_',\n    FORMAT='CSV',\n    HEADER_ROW=TRUE,\n    FIRSTROW=2    \n)\nWITH\n(\n    airline_id VARCHAR(100),\n    airline_name VARCHAR(100),\n    country VARCHAR(100)\n)\nAS QUERY1\n\n\n\n\n--openrow set function PARQUET\n\nSELECT\n* \nFROM\nOPENROWSET\n(\n    BULK 'data2',\n    DATA_SOURCE='serverless_ext_data_source_',\n    FORMAT='PARQUET'\n) \nAS QUERY2",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlesspractise",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

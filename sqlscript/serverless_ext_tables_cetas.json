@@ -1,0 +1,17 @@
+{
+	"name": "serverless_ext_tables_cetas",
+	"properties": {
+		"content": {
+			"query": "--create external tables using cetas\n\nCREATE EXTERNAL TABLE serverless_ext_table_cetas\nWITH\n(\n    LOCATION='output',\n    DATA_SOURCE=serverless_ext_data_source_,\n    FILE_FORMAT=serverless_ext_file_format_parquet\n)\nAS\nSELECT\nEMPLOYEEID,NAME,AGE,SALARY,DEPARTMENT,HIREDATE,CAST(Skills AS VARCHAR(1000)) AS Skills\nFROM\nOPENROWSET\n(\n    BULK 'data2',\n    DATA_SOURCE='serverless_ext_data_source_',\n    FORMAT='PARQUET'\n) \nAS QUERY2\n\nSELECT * FROM serverless_ext_table_cetas\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlesspractise",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

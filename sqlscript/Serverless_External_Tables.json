@@ -1,0 +1,17 @@
+{
+	"name": "Serverless_External_Tables",
+	"properties": {
+		"content": {
+			"query": "--create external table on top of csv file\n\nCREATE EXTERNAL TABLE serverless_ext_table_data1\n(\n    airline_id VARCHAR(100),\n    airline_name VARCHAR(100),\n    country VARCHAR(100)\n)\nWITH\n(\n    LOCATION='data1',\n    DATA_SOURCE=serverless_ext_data_source_,\n    FILE_FORMAT=serverless_ext_file_format_csv\n)\n\nSELECT * FROM serverless_ext_table_data1\n\n--create external table on top of parquet file\n\nCREATE EXTERNAL TABLE serverless_ext_table_data2\n(\n    EmployeeID\tINT,\n    Name VARCHAR(100),\n    Age\tINT,\n    Salary INT,\n    Department\tVARCHAR(100),\n    HireDate VARCHAR(100),\n    Skills VARCHAR(100)\n\n)\nWITH\n(\n    LOCATION='data2',\n    DATA_SOURCE=serverless_ext_data_source_,\n    FILE_FORMAT=serverless_ext_file_format_parquet\n)\n\nSELECT * FROM serverless_ext_table_data2",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "serverlesspractise",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

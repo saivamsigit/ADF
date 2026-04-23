@@ -1,0 +1,17 @@
+{
+	"name": "dedicated_sql_pool_copy_into",
+	"properties": {
+		"content": {
+			"query": "--create table using copy into\n\n\nCREATE TABLE dedicated_sql_pool_copy_into\n(\n    airline_id VARCHAR(100),\n    airline_name VARCHAR(100),\n    country VARCHAR(100)\n)\nWITH\n(\n    DISTRIBUTION=ROUND_ROBIN\n)\n\n\n--using copy into\n\nCOPY INTO dedicated_sql_pool_copy_into\n(\n    airline_id 2,\n    airline_name 1,\n    country 3\n)\nFROM 'https://saselflearningadls.dfs.core.windows.net/serverlessextds/data1/'\nWITH\n(\n    FILE_TYPE='CSV',\n    CREDENTIAL=(IDENTITY='Managed Identity'),\n    FIRSTROW=2\n    \n)\n\nSELECT * FROM dedicated_sql_pool_copy_into",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dedicatedsqlpoolpractise",
+				"poolName": "dedicatedsqlpoolpractise"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

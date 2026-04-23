@@ -1,0 +1,17 @@
+{
+	"name": "dedicated_sql_pool_cred_ext_ds_file_formats",
+	"properties": {
+		"content": {
+			"query": "--create master key--\n\nCREATE MASTER KEY ENCRYPTION BY PASSWORD ='Saivamsireddymorthala@123' \n\n--create credentials\n\nCREATE DATABASE SCOPED CREDENTIAL dedicatedsqlpool_cred_name\nWITH\nIDENTITY='Managed Identity'\n\n--create external data source\n\nCREATE EXTERNAL DATA SOURCE dedicatedsqlpool_ext_data_source_\nWITH\n(\n    LOCATION='abfss://serverlessextds@saselflearningadls.dfs.core.windows.net',\n    CREDENTIAL=dedicatedsqlpool_cred_name\n)\n\n--create external file formats for csv and parquet\n\nCREATE EXTERNAL FILE FORMAT dedicatedsqlpool_ext_file_format_csv\nWITH\n(\n    FORMAT_TYPE=DELIMITEDTEXT,\n    FORMAT_OPTIONS(\n        FIELD_TERMINATOR=',',\n        FIRST_ROW=2\n                   )\n)\n\n\nCREATE EXTERNAL FILE FORMAT dedicatedsqlpool_ext_file_format_parquet\nWITH\n(\n    FORMAT_TYPE=PARQUET,\n    DATA_COMPRESSION='org.apache.hadoop.io.compress.SnappyCodec'\n)",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "dedicatedsqlpoolpractise",
+				"poolName": "dedicatedsqlpoolpractise"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

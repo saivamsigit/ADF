@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-sql--synapsepractise",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/d4ffbc70-426a-474c-a045-8c7c7b4fa3a5/resourceGroups/rs_self_learning/providers/Microsoft.Synapse/workspaces/synapsepractise",
+		"groupId": "sql",
+		"fqdns": [
+			"synapsepractise.77e15a3f-ef5d-4543-b8c0-bac372e6aa71.sql.azuresynapse.net"
+		]
+	}
+}
